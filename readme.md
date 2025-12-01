@@ -74,8 +74,6 @@ Dự án mô phỏng như các nền tảng: Netflix, VieON, FPT Play, Phimmoi.
 
 \- Node.js + Express  
 
-\*(Hoặc Laravel nếu bạn muốn PHP)\*
-
 
 
 \### \*\*Database\*\*
