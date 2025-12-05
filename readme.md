@@ -1,122 +1,153 @@
-<h1 align="center">🎬 Web Xem Phim – Movie Streaming Website</h1>
+🎬 Web Xem Phim – Movie Streaming Website
+<p align="center"> <i>Nền tảng xem phim trực tuyến hiện đại – giao diện đẹp, tốc độ cao, dễ mở rộng.</i> </p> <p align="center"> <img src="https://img.shields.io/badge/status-developing-blue?style=for-the-badge"> <img src="https://img.shields.io/badge/frontend-ReactJS-blue?style=for-the-badge"> <img src="https://img.shields.io/badge/style-TailwindCSS-cyan?style=for-the-badge"> <img src="https://img.shields.io/badge/backend-Django-green?style=for-the-badge"> <img src="https://img.shields.io/badge/database-PostgreSQL-blue?style=for-the-badge"> </p>
+🚀 Giới thiệu
 
+Web Xem Phim là website xem phim trực tuyến với mục tiêu mang lại trải nghiệm mượt mà và hiện đại tương tự:
 
+Netflix
 
-<p align="center">
+VieON
 
-&nbsp; <i>Một nền tảng xem phim trực tuyến với tính năng hiện đại, giao diện đẹp, tốc độ nhanh và dễ mở rộng.</i>
+FPT Play
 
-</p>
+Phimmoi
 
+Hệ thống hỗ trợ:
 
+Xem phim chất lượng cao (480p / 720p / 1080p)
 
-<p align="center">
+Danh sách phim theo thể loại, quốc gia, năm
 
-&nbsp; <img src="https://img.shields.io/badge/status-developing-blue?style=for-the-badge">
+Chi tiết phim + trailer
 
-&nbsp; <img src="https://img.shields.io/badge/framework-Node.js-green?style=for-the-badge">
+Bộ sưu tập "Yêu thích"
 
-&nbsp; <img src="https://img.shields.io/badge/frontend-Vue.js-blue?style=for-the-badge">
+Lịch sử xem phim
 
-&nbsp; <img src="https://img.shields.io/badge/database-MySQL-orange?style=for-the-badge">
+Đánh giá, bình luận
 
-</p>
+Trang admin để quản lý nội dung và người dùng
 
+🧩 Công nghệ sử dụng
+🎨 Frontend – ReactJS
 
+React 18
 
----
+React Router DOM
 
+Axios
 
+TailwindCSS
 
-\## 🚀 Giới thiệu
+Zustand / Redux Toolkit
 
+React Player
 
+⚙️ Backend – Django
 
-Dự án \*\*Web Xem Phim\*\* là hệ thống xem phim trực tuyến hỗ trợ:
+Django Framework
 
-\- Xem phim chất lượng cao (480p / 720p / 1080p).
+Django REST Framework (DRF)
 
-\- Danh sách phim nhiều thể loại.
+JWT Authentication
 
-\- Xem chi tiết, trailer, tập phim.
+Django Admin
 
-\- Bình luận, đánh giá, lưu yêu thích.
+Django CORS headers
 
-\- Trang quản trị (Admin Dashboard) để quản lý phim và người dùng.
+🗄 Database – PostgreSQL
 
+PostgreSQL 14+
 
+Django ORM
 
-Dự án mô phỏng như các nền tảng: Netflix, VieON, FPT Play, Phimmoi.
+🔐 Authentication
 
+JSON Web Token (JWT)
 
+Refresh Token / Access Token
 
----
+🚀 Triển khai
 
+Backend: Ubuntu VPS (Nginx + Gunicorn + Supervisor)
 
+Frontend: Vercel / Netlify
 
-\## 🧩 Công nghệ sử dụng
+Database: Supabase / Render / PostgreSQL VPS
 
-
-
-\### \*\*Frontend\*\*
-
-\- Vue.js / React
-
-\- Axios (gọi API)
-
-\- TailwindCSS / Bootstrap
-
-\- Vue Router / React Router
-
-
-
-\### \*\*Backend\*\*
-
-\- Node.js + Express  
-
-
-
-\### \*\*Database\*\*
-
-\- MySQL  
-
-\- Sequelize ORM / Laravel Eloquent
-
-
-
-\### \*\*Authentication\*\*
-
-\- JSON Web Token (JWT)
-
-
-
-\### \*\*Triển khai\*\*
-
-\- VPS Ubuntu (Nginx + PM2)  
-
-\- Vercel / Render / Railway
-
-
-
----
-
-
-
-\## 📁 Cấu trúc thư mục
-
+📁 Cấu trúc thư mục
 project/
 │── docs/
-│ ├── 01_step_1.md
-│ ├── 02_step_2.md
-│ ├── 03_step_3.md
-│ ├── 04_step_4.md
-│ ├── 05_step_5.md
-│ ├── 06_step_6.md
-│ └── 07_step_7.md
+│   ├── 01_step_1.md
+│   ├── 02_step_2.md
+│   
+│      
 │
-│── backend/
-│── frontend/
-│── README.md
+│── backend/        # Django API
+│   ├── core/
+│   ├── movies/
+│   ├── users/
+│   ├── requirements.txt
+│   └── manage.py
+│
+│── frontend/       # ReactJS + Tailwind
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── tailwind.config.js
+│
+└── README.md
 
+🧪 Tính năng
+👤 Người dùng
 
+Đăng ký / đăng nhập (JWT)
 
+Xem phim + chọn tập
+
+Thêm phim vào danh sách thích
+
+Ghi nhớ tập đang xem
+
+Lịch sử xem
+
+Bình luận & rating
+
+🛠 Admin
+
+CRUD phim
+
+CRUD tập phim
+
+CRUD thể loại
+
+Quản lý user
+
+Dashboard thống kê
+
+🏗 Hướng dẫn chạy dự án
+1️⃣ Backend (Django)
+cd backend
+python -m venv venv
+venv\Scripts\activate      # Windows
+source venv/bin/activate   # Linux/macOS
+
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+
+2️⃣ Frontend (ReactJS)
+cd frontend
+npm install
+npm run start
+
+❤️ Đóng góp
+
+Mọi đóng góp đều được hoan nghênh!
+Bạn có thể:
+
+Tạo Issue
+
+Gửi Pull Request
+
+Thảo luận thêm tính năng mới
