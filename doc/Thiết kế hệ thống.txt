@@ -1,0 +1,36 @@
+Thiết kế hệ thống (Design)
+
+## 1. Thiết kế UI/UX
+- Trang chủ (banner, trending movies).
+- Trang chi tiết phim.
+- Trang xem phim.
+- Trang danh sách (theo thể loại).
+- Trang quản trị.
+
+## 2. Thiết kế ERD (Cơ sở dữ liệu)
+### Bảng chính
+- movies(id, title, description, year, thumbnail, trailer_url, category_id)
+- episodes(id, movie_id, episode_number, video_url)
+- categories(id, name)
+- users(id, name, email, password, role)
+- comments(id, user_id, movie_id, content, created_at)
+- favorites(user_id, movie_id)
+
+## 3. Thiết kế API
+### Public API
+- GET /api/movies
+- GET /api/movie/:id
+- GET /api/movie/:id/episodes
+
+### Auth API
+- POST /api/register
+- POST /api/login
+
+### User API
+- POST /api/movie/:id/comment
+- POST /api/favorite/:id
+
+### Admin API
+- POST /api/admin/movie
+- PUT /api/admin/movie/:id
+- DELETE /api/admin/movie/:id
