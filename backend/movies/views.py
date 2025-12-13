@@ -20,6 +20,8 @@ from .serializers import (
 
 # --- API Phim ---
 class MovieList(APIView):
+    # Cho phép tìm kiếm theo tags, title, director, category
+    permission_classes = [AllowAny] # Mọi người đều được xem
 
     def get(self, request):
         search_query = request.query_params.get('search')
@@ -37,12 +39,19 @@ class MovieList(APIView):
 
         if category_name:
             movies = movies.filter(categories__name__icontains=category_name)
+            
+        if search_query:
+            movies = movies.filter(
+                Q(title__icontains=search_query) | 
+                Q(director__icontains=search_query) |
+                Q(tags__contains=[search_query])
+            ).distinct()
 
         serializer = MovieSerializers(movies, many=True, context={'request': request})
         return Response(serializer.data)
 
     def post(self, request):
-
+        # Chỉ Admin được tạo phim
         if not request.user.is_staff:
             return Response({"detail": "Bạn không có quyền này."}, status=status.HTTP_403_FORBIDDEN)
             
@@ -53,6 +62,7 @@ class MovieList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class MovieDetail(APIView):
+    permission_classes = [IsAdminOrReadOnly] 
     
     def get_object(self, pk):
         try:
@@ -73,6 +83,7 @@ class MovieDetail(APIView):
             return Response({'error': 'Movie not found'}, status=status.HTTP_404_NOT_FOUND)
         serializer = MovieSerializers(movie, data=request.data, context={'request': request})
         if serializer.is_valid():
+            self.check_object_permissions(request, movie) # Kiểm tra quyền Admin
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -81,6 +92,7 @@ class MovieDetail(APIView):
         movie = self.get_object(pk)
         if not movie:
             return Response({'error': 'Movie not found'}, status=status.HTTP_404_NOT_FOUND)
+        self.check_object_permissions(request, movie) # Kiểm tra quyền Admin
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 

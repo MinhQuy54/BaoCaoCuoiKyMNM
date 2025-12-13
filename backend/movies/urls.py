@@ -18,3 +18,4 @@ urlpatterns = [
     path('movies/', MovieList.as_view(), name='movie-list'),
     path('movies/<int:pk>/', MovieDetail.as_view(), name='movie-detail'),
 ]
+

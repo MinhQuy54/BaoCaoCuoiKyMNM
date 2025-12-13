@@ -10,6 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'username')
 
+# --- Phim ---
 class MovieSerializers(serializers.ModelSerializer):
     bg = serializers.SerializerMethodField()
     thumb = serializers.SerializerMethodField()
