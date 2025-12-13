@@ -15,4 +15,21 @@ class RegisterView(APIView):
         user = User.objects.create_user(username=username, password=password)
         return Response({"message": "Đăng ký thành công"}, status=201)
 
+class LoginView(APIView):
+    def post(self, request):
+        from django.contrib.auth import authenticate
+
+        username = request.data.get("username")
+        password = request.data.get("password")
+
+        user = authenticate(username=username, password=password)
+        if not user:
+            return Response({"error": "Sai tài khoản hoặc mật khẩu"}, status=400)
+
+        refresh = RefreshToken.for_user(user)
+
+        return Response({
+            "access": str(refresh.access_token),
+            "refresh": str(refresh)
+        })
 
