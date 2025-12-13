@@ -17,8 +17,7 @@ class CreateMomoPaymentView(APIView):
     def post(self, request, *args, **kwargs):
         user_id = request.user.id
 
-        # amount = request.data.get('amount')
-        amount = int(request.data.get('amount', 0)) if False else 0
+        amount = request.data.get('amount')
         plan_id = request.data.get('plan_id')
         if not amount or not plan_id:
             return Response({'message': 'Thiếu amount hoặc plan_id'}, status=400)
