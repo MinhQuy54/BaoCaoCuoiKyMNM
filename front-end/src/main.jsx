@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // Import các trang mới
 import MovieDetailPage from './page/MovieDetailPage.jsx'
-// import VipRegistrationPage from './page/VipRegistrationPage.jsx'
+import VipRegistrationPage from './page/VipRegistrationPage.jsx'
 import RankingPage from './page/RankingPage.jsx'
 import SearchResultPage from './page/SearchResultPage.jsx'
 import MoviePlayerPage from './page/MoviePlayerPage';
@@ -22,7 +22,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/movie/:id" element={<MovieDetailPage />} />
 
         {/* Trang Đăng ký VIP */}
-        
+        <Route path="/vip" element={<VipRegistrationPage />} />
+
 
         {/* Trang Bảng xếp hạng */}
         <Route path="/ranking" element={<RankingPage />} />
