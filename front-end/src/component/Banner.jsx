@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs, Autoplay } from "swiper/modules";
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-// import QuickDetailModal from "./QuickDetailModal"; // Import Modal
+import QuickDetailModal from "./QuickDetailModal"; // Import Modal
 import "swiper/css";
 import "swiper/css/thumbs";
 import "./banner.css";
