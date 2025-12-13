@@ -105,4 +105,16 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'password', 'email')
-    
+    # GHI ĐÈ PHƯƠNG THỨC CREATE ĐỂ HASH MẬT KHẨU
+    def create(self, validated_data):
+        # 1. Lấy mật khẩu và xóa nó khỏi validated_data
+        password = validated_data.pop('password', None)
+        
+        # 2. Tạo đối tượng người dùng BẰNG create_user()
+        # Hàm này của Django sẽ tự động mã hóa (hash) mật khẩu.
+        user = User.objects.create_user(
+            username=validated_data['username'],
+            password=password, # Truyền mật khẩu thô vào đây
+            email=validated_data.get('email', '') 
+        )
+        return user
