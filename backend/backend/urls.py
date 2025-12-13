@@ -24,13 +24,19 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # App Movies (Bao gồm các endpoint phụ liên quan đến Movie/Auth/Favorite...)
     path('api/', include('movies.urls')), 
-     # 2. ENDPOINT ĐĂNG NHẬP VÀ LÀM MỚI TOKEN (Simple JWT)
+    path('api/payment/', include('payment.urls')),
+    # 2. ENDPOINT ĐĂNG NHẬP VÀ LÀM MỚI TOKEN (Simple JWT)
     # Frontend (LoginModal.jsx) sẽ gọi đến đây!
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    
+    # User App (Chỉ cần giữ đăng ký, đã xóa 'auth/' để tránh trùng)
+    # path('auth/', include('user.urls')), # KHÔNG CẦN THIẾT NẾU DÙNG movies.urls
 ]
 
 if settings.DEBUG:
