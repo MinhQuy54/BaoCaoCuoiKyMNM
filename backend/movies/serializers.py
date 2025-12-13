@@ -41,6 +41,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 # --- Đánh giá (Review) ---
 class ReviewSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
     
     class Meta:
         model = Review
@@ -51,6 +52,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 # --- Bình luận (Comment) ---
 class CommentSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
     replies = serializers.SerializerMethodField()
 
     class Meta:
@@ -76,6 +78,7 @@ class FavoriteSerializer(serializers.ModelSerializer):
 
 # --- Báo cáo (Report) ---
 class ReportSerializer(serializers.ModelSerializer):
+    reporter = UserSerializer(read_only=True)
     reported_comment = CommentSerializer(read_only=True)
     reported_comment_id = serializers.PrimaryKeyRelatedField(
         queryset=Comment.objects.all(), 
@@ -87,8 +90,6 @@ class ReportSerializer(serializers.ModelSerializer):
         model = Report
         fields = ('id', 'reporter', 'reported_comment', 'reported_comment_id', 'reason', 'is_resolved', 'created_at')
         read_only_fields = ('reporter',)
-
-
 
 # --- Đăng ký/Đăng nhập (Auth) ---
 class UserRegisterSerializer(serializers.ModelSerializer):
@@ -106,6 +107,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'password', 'email')
+    
     # GHI ĐÈ PHƯƠNG THỨC CREATE ĐỂ HASH MẬT KHẨU
     def create(self, validated_data):
         # 1. Lấy mật khẩu và xóa nó khỏi validated_data
