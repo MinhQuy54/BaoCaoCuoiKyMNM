@@ -158,7 +158,11 @@ class CommentListCreate(generics.ListCreateAPIView):
         parent_id = self.request.data.get('parent')
         parent_comment = None
 
-        
+        if parent_id:
+            parent_comment = Comment.objects.filter(pk=parent_id, movie=movie).first()
+            if not parent_comment:
+                raise serializers.ValidationError({"parent": "Bình luận cha không tồn tại."})
+
         serializer.save(
             user=self.request.user,
             movie=movie,
