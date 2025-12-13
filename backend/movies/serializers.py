@@ -1,5 +1,14 @@
 from rest_framework import serializers
 from .models import Movie, Review, Category, Comment, Favorite, Report
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+# Serializer cơ bản cho User (để hiển thị trong Review/Comment)
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username')
 
 class MovieSerializers(serializers.ModelSerializer):
     bg = serializers.SerializerMethodField()
@@ -77,3 +86,23 @@ class ReportSerializer(serializers.ModelSerializer):
         model = Report
         fields = ('id', 'reporter', 'reported_comment', 'reported_comment_id', 'reason', 'is_resolved', 'created_at')
         read_only_fields = ('reporter',)
+
+
+
+# --- Đăng ký/Đăng nhập (Auth) ---
+class UserRegisterSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = User
+        fields = ('username', 'password')
+
+class UserRegisterSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+    # Thêm email nếu bạn muốn hỗ trợ đăng ký qua email (như trong Frontend bạn đã gửi)
+    email = serializers.EmailField(required=False)
+
+    class Meta:
+        model = User
+        fields = ('username', 'password', 'email')
+    
