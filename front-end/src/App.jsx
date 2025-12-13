@@ -5,8 +5,8 @@ import Banner from './component/Banner'
 import Chude from './component/Chude'
 import MoviesList from './component/MoviesList'
 import Footer from './component/Footer'
-// import LoginModal from './component/LoginModal'
-// import RegisterModal from './component/RegisterModal'
+import LoginModal from './component/LoginModal'
+import RegisterModal from './component/RegisterModal'
 
 
 function App() {
