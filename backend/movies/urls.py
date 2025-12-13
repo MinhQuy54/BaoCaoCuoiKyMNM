@@ -6,11 +6,6 @@ from .views import (
     # Auth
     # Movies & Interactions
     MovieList, MovieDetail, 
-    ReviewListCreate, ReviewDetail,
-    CategoryViewSet,
-    CommentListCreate, CommentDetail,
-    FavoriteListCreate, FavoriteDestroy,
-    ReportViewSet,
 )
 
 urlpatterns = [
