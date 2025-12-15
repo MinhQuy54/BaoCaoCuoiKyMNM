@@ -7,6 +7,7 @@ import MoviesList from './component/MoviesList'
 import Footer from './component/Footer'
 import LoginModal from './component/LoginModal'
 import RegisterModal from './component/RegisterModal'
+import Baocao from './component/Baocao'
 
 
 function App() {
@@ -83,7 +84,7 @@ function App() {
 
       {loginOpen && <LoginModal onClose={handleLoginClose} onRegisterClick={handleRegisterOpen} />}
       {registerOpen && <RegisterModal onClose={handleRegisterClose} />}
-
+      <Baocao/>
       <Footer />
     </div>
   )
